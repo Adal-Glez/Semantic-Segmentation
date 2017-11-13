@@ -35,8 +35,8 @@ def load_vgg(sess, vgg_path):
     vgg_layer7_out_tensor_name = 'layer7_out:0'
     
     tf.saved_model.loader.load(sess, [vgg_tag], vgg_path)
-    
     graph = tf.get_default_graph()
+    
     image_input = graph.get_tensor_by_name(vgg_input_tensor_name)
     keep_prob = graph.get_tensor_by_name(vgg_keep_prob_tensor_name)
     l3 = graph.get_tensor_by_name(vgg_layer3_out_tensor_name)
@@ -70,15 +70,15 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
 
     
     #output
-    output = tf.layers.conv2d_transpose(conv_1x1_l7, num_clases, 4, 2, padding = "same", 
+    output = tf.layers.conv2d_transpose(conv_1x1_l7, num_classes, 4, 2, padding = "same", 
                                         kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3) )   
     output = tf.add(output, conv_1x1_l4)
     
-    output = tf.layers.conv2d_transpose(output, num_clases, 4, 2, padding = "same", 
+    output = tf.layers.conv2d_transpose(output, num_classes, 4, 2, padding = "same", 
                                         kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3) )   
     output = tf.add(output, conv_1x1_l3)
     
-    output = tf.layers.conv2d_transpose(output, num_clases, 16, 8, padding = "same", 
+    output = tf.layers.conv2d_transpose(output, num_classes, 16, 8, padding = "same", 
                                         kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3) )   
     
     return output
