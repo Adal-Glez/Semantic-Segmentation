@@ -59,33 +59,66 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
     :return: The Tensor for the last layer of output
     """
     # TODO: Implement function
-    conv_1x1_l7 = tf.layers.conv2d(vgg_layer7_out, num_classes, 1,strides=(1,1), padding = "same", 
-                                kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3) ,
-                                kernel_initializer=tf.truncated_normal_initializer(stddev=0.01) )    
+    conv_1x1_l7 = tf.layers.conv2d(
+        inputs= vgg_layer7_out, 
+        filters= num_classes, 
+        kernel_size= 1,
+        strides= (1,1), 
+        padding= "same", 
+        kernel_regularizer= tf.contrib.layers.l2_regularizer(1e-3) ,
+        kernel_initializer= tf.truncated_normal_initializer(stddev=0.01))    
     
-    conv_1x1_l4 = tf.layers.conv2d(vgg_layer4_out, num_classes, 1,strides=(1,1), padding = "same", 
-                                kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3) ,
-                                kernel_initializer=tf.truncated_normal_initializer(stddev=0.01) ) 
+   
+    conv_1x1_l4 = tf.layers.conv2d(
+        inputs= vgg_layer4_out, 
+        filters= num_classes, 
+        kernel_size= 1,
+        strides= (1,1), 
+        padding= "same", 
+        kernel_regularizer= tf.contrib.layers.l2_regularizer(1e-3) ,
+        kernel_initializer= tf.truncated_normal_initializer(stddev=0.01) ) 
 
-    conv_1x1_l3 = tf.layers.conv2d(vgg_layer3_out, num_classes, 1,strides=(1,1), padding = "same", 
-                                kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3) ,
-                                kernel_initializer=tf.truncated_normal_initializer(stddev=0.01)) 
+    conv_1x1_l3 = tf.layers.conv2d(
+        inputs= vgg_layer3_out, 
+        filters= num_classes, 
+        kernel_size= 1,
+        strides=(1,1), 
+        padding = "same",
+        kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3) ,
+        kernel_initializer=tf.truncated_normal_initializer(stddev=0.01)) 
 
     
     #output
-    output = tf.layers.conv2d_transpose(conv_1x1_l7, num_classes, 4, 2, padding = "same", 
-                                        kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
-                                        kernel_initializer = tf.truncated_normal_initializer(stddev=0.01))   
+    output = tf.layers.conv2d_transpose(
+        inputs= conv_1x1_l7, 
+        filters= num_classes, 
+        kernel_size= 4, 
+        strides=(2,2), 
+        padding = "same",
+        kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+        kernel_initializer = tf.truncated_normal_initializer(stddev=0.01))   
+    
     output = tf.add(output, conv_1x1_l4)
     
-    output = tf.layers.conv2d_transpose(output, num_classes, 4, 2, padding = "same", 
-                                        kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
-                                        kernel_initializer = tf.truncated_normal_initializer(stddev=0.01))   
+    output = tf.layers.conv2d_transpose(
+        inputs= output, 
+        filters= num_classes, 
+        kernel_size= 4, 
+        strides= (2,2), 
+        padding= "same",
+        kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+        kernel_initializer = tf.truncated_normal_initializer(stddev=0.01))   
+    
     output = tf.add(output, conv_1x1_l3)
     
-    output = tf.layers.conv2d_transpose(output, num_classes, 16, 8, padding = "same", 
-                                        kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
-                                        kernel_initializer = tf.truncated_normal_initializer(stddev=0.01))   
+    output = tf.layers.conv2d_transpose(
+        inputs= output, 
+        filters= num_classes, 
+        kernel_size= 16, 
+        strides=(8,8), 
+        padding = "same", 
+        kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3),
+        kernel_initializer = tf.truncated_normal_initializer(stddev=0.01))   
     
     return output
 tests.test_layers(layers)
@@ -127,7 +160,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     :param keep_prob: TF Placeholder for dropout keep probability
     :param learning_rate: TF Placeholder for learning rate
     """
-    rate = 0.0005
+    rate = 5e-4 
     dropout = 0.5
     step = 20
     
