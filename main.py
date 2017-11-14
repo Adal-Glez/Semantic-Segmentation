@@ -121,6 +121,10 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     :param keep_prob: TF Placeholder for dropout keep probability
     :param learning_rate: TF Placeholder for learning rate
     """
+    rate = 0.0005
+    dropout = 0.5
+    step = 20
+    
     # TODO: Implement function
     for epoch in range(1, epochs+1):
         i=0
