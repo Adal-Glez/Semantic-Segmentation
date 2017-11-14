@@ -162,7 +162,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     """
     rate = .0001 #5e-4 
     dropout = 0.2 #0.5
-    step = 20
+    step = 50
     
     # TODO: Implement function
     for epoch in range(1, epochs+1):
