@@ -124,12 +124,13 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     # TODO: Implement function
     for epoch in range(1, epochs+1):
         i=0
-        for images, label in get_batches_fn(batch_size):
-            sess.run(train_op , fed_dict ={
-                    input_image : images,
-                    correct_label: labels, 
-                    keep_prob : dropout, 
-                    learning_rate: rate})
+        for images, labels in get_batches_fn(batch_size):
+            sess.run(train_op, feed_dict={
+                    input_image: images,
+                    correct_label: labels,
+                    keep_prob:dropout,
+                    learning_rate:rate})
+            
             if i % step == 0:
                 loss = sess.run(cross_entropy_loss, feed_dict={
                         input_image: images,
