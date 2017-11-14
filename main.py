@@ -160,8 +160,8 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     :param keep_prob: TF Placeholder for dropout keep probability
     :param learning_rate: TF Placeholder for learning rate
     """
-    rate = 5e-4 
-    dropout = 0.5
+    rate = .0001 #5e-4 
+    dropout = 0.2 #0.5
     step = 20
     
     # TODO: Implement function
@@ -201,8 +201,8 @@ def run():
     #  https://www.cityscapes-dataset.com/
     
     #parameters
-    epochs = 20
-    batch_size = 10
+    epochs = 25 #20
+    batch_size = 1 #10
 
     print("Training " + str(epochs) + " epochs for batch size " + str(batch_size))
 
