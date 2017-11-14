@@ -122,7 +122,7 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     :param learning_rate: TF Placeholder for learning rate
     """
     # TODO: Implement function
-    for epoch in range(1, epochs+1)
+    for epoch in range(1, epochs+1):
         i=0
         for images, label in get_batches_fn(batch_size):
             sess.run(train_op , fed_dict ={
