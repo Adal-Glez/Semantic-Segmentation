@@ -1,6 +1,6 @@
 # Semantic Segmentation
 ### Introduction
-In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
+In this project, I've labeled the pixels of a road in images using a Fully Convolutional Network (FCN).
 
 ### Setup
 ##### Frameworks and Packages
@@ -12,25 +12,27 @@ Make sure you have the following is installed:
 ##### Dataset
 Download the [Kitti Road dataset](http://www.cvlibs.net/datasets/kitti/eval_road.php) from [here](http://www.cvlibs.net/download.php?file=data_road.zip).  Extract the dataset in the `data` folder.  This will create the folder `data_road` with all the training a test images.
 
-### Start
+### Reflections
 ##### Implement
-Implement the code in the `main.py` module indicated by the "TODO" comments.
-The comments indicated with "OPTIONAL" tag are not required to complete.
-##### Run
-Run the following command to run the project:
-```
-python main.py
-```
-**Note** If running this in Jupyter Notebook system messages, such as those regarding test status, may appear in the terminal rather than the notebook.
+This project ive labeled the pixels of a road in images from the vehicle frontal camera, 
 
-### Submission
-1. Ensure you've passed all the unit tests.
-2. Ensure you pass all points on [the rubric](https://review.udacity.com/#!/rubrics/989/view).
-3. Submit the following in a zip file.
- - `helper.py`
- - `main.py`
- - `project_tests.py`
- - Newest inference images from `runs` folder  (**all images from the most recent run**)
- 
- ## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+Using a Fully Convolutional Network(FCN)
+programmed in Python 3.6.1, Tensorflow 1.2.1, CUDA 8.0.61 running in an Ubuntu Ubuntu 16.04.2 running in a AWS Instance g3.4xlarge. 
+
+I've setted the following hyper parameters since the resulting model seems to generalize well and do not over or under fit the test data in the dataset:
+
+
+Epochs: 25
+Batch Size: 1 (One 160x576 pixel RGB image)
+Learning rate: 0.0001
+Dropouts: 0.2
+
+###Images 
+
+    ![image](https://github.com/adl-aleb/Semantic-Segmentation/blob/master/runs/1510697291.4966705/um_000018.png) 
+
+    
+    ![image](http://github.com/adl-aleb/Semantic-Segmentation/blob/master/runs/1510697291.4966705/um_000032.png)
+       
+We saved the final model and resulting weights in the runs directory, where all of the latest inference images are also stored.
+
