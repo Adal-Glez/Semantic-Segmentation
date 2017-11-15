@@ -27,12 +27,13 @@ Batch Size: 1 (One 160x576 pixel RGB image)
 Learning rate: 0.0001
 Dropouts: 0.2
 
-###Images 
+### Images 
+![image](./runs/1510697291.4966705/uu_000099.png)
 
-    ![image](https://github.com/adl-aleb/Semantic-Segmentation/blob/master/runs/1510697291.4966705/um_000018.png) 
+![image](./runs/1510697291.4966705/um_000032.png)
 
-    
-    ![image](http://github.com/adl-aleb/Semantic-Segmentation/blob/master/runs/1510697291.4966705/um_000032.png)
+![image](./runs/1510697291.4966705/um_000018.png) 
+
        
 We saved the final model and resulting weights in the runs directory, where all of the latest inference images are also stored.
 
