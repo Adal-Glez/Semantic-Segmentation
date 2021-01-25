@@ -15,7 +15,7 @@ I've setted the following hyper parameters since the resulting model seems to ge
 - Dropouts: 0.2
 
 ### Video Result
-<video src="/Users/adalberto.gonzalez/Desktop/Image Segmentation Comparison.mov"></video>
+<video src="https://github.com/Adal-Glez/Semantic-Segmentation/blob/master/Image%20Segmentation%20Comparison.mov"></video>
 
 ### Images
 ![image](./runs/1510697291.4966705/uu_000099.png)
