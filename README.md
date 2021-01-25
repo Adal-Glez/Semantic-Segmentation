@@ -15,8 +15,7 @@ I've setted the following hyper parameters since the resulting model seems to ge
 - Dropouts: 0.2
 
 ### Video Result
-<video src="Image%20Segmentation%20Comparison.mov"></video>
-
+[![SC2 Video](/Image_Segmentation_Comparison.gif)](/Image%20Segmentation%20Comparison.mov)
 
 
 ### Images
